@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Throwable;
-
 class Parser
 {
 
@@ -13,9 +11,6 @@ class Parser
     {
     }
 
-    /**
-     * @throws Throwable
-     */
     public function parseUpower(): void
     {
         $this->writeTmpFile();

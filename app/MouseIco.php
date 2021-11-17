@@ -14,9 +14,6 @@ class MouseIco
         $this->writer = new Writer($config);
     }
 
-    /**
-     * @throws \Throwable
-     */
     public function run(): void
     {
         $this->parser->parseUpower();
