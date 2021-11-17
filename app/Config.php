@@ -9,6 +9,7 @@ class Config
     private string $tmpFile;
     private string $templateFile;
     private string $template;
+    private array $chargeColor;
 
     public function __construct()
     {
@@ -18,6 +19,7 @@ class Config
         $this->setTmpFile($configIni['tmp_output']);
         $this->setTemplateFile($configIni['template_file']);
         $this->setTemplate($configIni['output_template']);
+        $this->setChargeColor($configIni['color']);
     }
 
     public function getIniFile(): string
@@ -70,5 +72,13 @@ class Config
         $this->template = $template;
     }
 
+    public function getChargeColor(): array
+    {
+        return $this->chargeColor;
+    }
 
+    private function setChargeColor(array $chargeColor): void
+    {
+        $this->chargeColor = $chargeColor;
+    }
 }

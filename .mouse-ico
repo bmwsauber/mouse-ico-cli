@@ -9,4 +9,10 @@ tmp_output = /tmp/output_mouse_hidpp_battery_0
 template_file = /tmp/tag_mouse_hidpp_battery_0
 
 [output_template]
-output_template = '<fn=1> </fn>mx: (%d%%)';
+output_template = '<fc=%s><fn=1> </fn>mx: (%d%%)</fc>';
+
+[colors]
+color[full] = '#98be65';
+color[semi] = '#ecbe7b';
+color[low] = '#ff6c6b';
+color[empty] = '#ffffff';
