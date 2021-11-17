@@ -11,7 +11,7 @@ class Writer
     public function writeTemplate(int $percentage): void
     {
         $content = sprintf(
-            "<fn=1>%d%%</fn>",
+            $this->config->getTemplate(),
             $percentage
         );
 

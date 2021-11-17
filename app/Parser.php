@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Exception;
+
 class Parser
 {
 
@@ -11,6 +13,9 @@ class Parser
     {
     }
 
+    /**
+     * @throws Exception
+     */
     public function parseUpower(): void
     {
         $this->writeTmpFile();
@@ -28,15 +33,28 @@ class Parser
         system($command, $result_code);
     }
 
+    /**
+     * @throws Exception
+     */
     private function matchPercentage(): void
     {
         $output = file_get_contents($this->config->getTmpFile());
         preg_match('/percentage:\s*(\d*)%/', $output, $matches);
-        $this->percentage = $matches[1];
+
+        if (!is_numeric(@$matches[1])) {
+            throw new Exception('Device not found');
+        }
+
+        $this->setPercentage($matches[1]);
     }
 
     public function getPercentage(): int
     {
         return $this->percentage;
+    }
+
+    public function setPercentage(int $percentage): void
+    {
+        $this->percentage = $percentage;
     }
 }

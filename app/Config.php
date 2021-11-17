@@ -8,6 +8,7 @@ class Config
     private string $deviceName;
     private string $tmpFile;
     private string $templateFile;
+    private string $template;
 
     public function __construct()
     {
@@ -16,6 +17,7 @@ class Config
         $this->setDeviceName($configIni['device_name']);
         $this->setTmpFile($configIni['tmp_output']);
         $this->setTemplateFile($configIni['template_file']);
+        $this->setTemplate($configIni['output_template']);
     }
 
     public function getIniFile(): string
@@ -57,4 +59,16 @@ class Config
     {
         return $this->templateFile;
     }
+
+    public function getTemplate(): string
+    {
+        return $this->template;
+    }
+
+    private function setTemplate(string $template): void
+    {
+        $this->template = $template;
+    }
+
+
 }

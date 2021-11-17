@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Exception;
+
 class MouseIco
 {
     private Parser $parser;
@@ -14,6 +16,9 @@ class MouseIco
         $this->writer = new Writer($config);
     }
 
+    /**
+     * @throws Exception
+     */
     public function run(): void
     {
         $this->parser->parseUpower();

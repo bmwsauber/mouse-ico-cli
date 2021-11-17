@@ -4,4 +4,11 @@ require './vendor/autoload.php';
 
 use App\MouseIco;
 
-(new MouseIco())->run();
+$app = new MouseIco();
+try {
+    $app->run();
+} catch (Throwable $exception) {
+    echo 'Error - ' . $exception->getMessage();
+}
+
+
