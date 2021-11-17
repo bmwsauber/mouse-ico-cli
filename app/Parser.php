@@ -15,10 +15,12 @@ class Parser
     /**
      * @throws Exception
      */
-    public function parseUpower(): void
+    public function parseUpower(): self
     {
         $this->writeTmpFile();
         $this->matchPercentage();
+
+        return $this;
     }
 
     private function writeTmpFile(): void

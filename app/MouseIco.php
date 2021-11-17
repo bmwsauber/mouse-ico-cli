@@ -21,9 +21,14 @@ class MouseIco
      */
     public function run(): void
     {
-        $this->parser->parseUpower();
-        $percentage = $this->parser->getPercentage();
-        $this->writer->writeTemplate($percentage);
+        $percentage = $this->parser
+            ->parseUpower()
+            ->getPercentage();
 
+        $contents = $this->writer
+            ->prepareContent($percentage);
+
+        $this->writer
+            ->writeTemplate($contents);
     }
 }

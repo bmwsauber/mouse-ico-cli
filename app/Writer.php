@@ -8,19 +8,19 @@ class Writer
     {
     }
 
-    public function writeTemplate(int $percentage): void
+    public function writeTemplate(string $content): void
     {
-        $chargeLevelColor = $this->chargeLevelColor($percentage);
+        $filePath = $this->config->getTemplateFile();
+        file_put_contents($filePath, $content);
+    }
 
-
-        $content = sprintf(
+    public function prepareContent(int $percentage): string
+    {
+        return sprintf(
             $this->config->getTemplate(),
-            $chargeLevelColor,
+            $this->chargeLevelColor($percentage),
             $percentage
         );
-
-        $file = $this->config->getTemplateFile();
-        file_put_contents($file, $content);
     }
 
     private function chargeLevelColor(int $percentage): string
