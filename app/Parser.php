@@ -6,7 +6,6 @@ use Exception;
 
 class Parser
 {
-
     private int $percentage;
 
     public function __construct(private Config $config)

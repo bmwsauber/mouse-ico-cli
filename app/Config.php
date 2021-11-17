@@ -13,7 +13,7 @@ class Config
 
     public function __construct()
     {
-        $this->setIniFile('.mouse-ico');
+        $this->setIniFile(__DIR__.'/../.mouse-ico');
         $configIni = parse_ini_file($this->getIniFile());
         $this->setDeviceName($configIni['device_name']);
         $this->setTmpFile($configIni['tmp_output']);
