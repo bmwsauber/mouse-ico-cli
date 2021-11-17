@@ -9,4 +9,4 @@ tmp_output = /tmp/output_mouse_hidpp_battery_0
 template_file = /tmp/tag_mouse_hidpp_battery_0
 
 [output_template]
-output_template = '<fn=1>%d%%</fn>';
+output_template = '<fn=1> </fn>mx: (%d%%)';
