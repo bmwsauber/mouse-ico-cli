@@ -7,13 +7,13 @@ use Exception;
 class MouseIco
 {
     private Parser $parser;
-    private Writer $writer;
+    private Template $writer;
 
     public function __construct()
     {
         $config = new Config();
         $this->parser = new Parser($config);
-        $this->writer = new Writer($config);
+        $this->writer = new Template($config);
     }
 
     /**
@@ -26,9 +26,9 @@ class MouseIco
             ->getPercentage();
 
         $contents = $this->writer
-            ->prepareContent($percentage);
+            ->fill($percentage);
 
         $this->writer
-            ->writeTemplate($contents);
+            ->write($contents);
     }
 }

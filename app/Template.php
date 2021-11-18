@@ -2,19 +2,13 @@
 
 namespace App;
 
-class Writer
+class Template
 {
     public function __construct(private Config $config)
     {
     }
 
-    public function writeTemplate(string $content): void
-    {
-        $filePath = $this->config->getTemplateFile();
-        file_put_contents($filePath, $content);
-    }
-
-    public function prepareContent(int $percentage): string
+    public function fill(int $percentage): string
     {
         return sprintf(
             $this->config->getTemplate(),
@@ -39,5 +33,11 @@ class Writer
         }
 
         return $colors['empty'];
+    }
+
+    public function write(string $content): void
+    {
+        $filePath = $this->config->getTemplateFile();
+        file_put_contents($filePath, $content);
     }
 }
