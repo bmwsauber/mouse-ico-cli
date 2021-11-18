@@ -15,15 +15,15 @@ class Parser
     /**
      * @throws Exception
      */
-    public function parseUpower(): self
+    public function parseOutput(): self
     {
-        $this->writeTmpFile();
-        $this->matchPercentage();
+        $this->writeOutputFile();
+        $this->match();
 
         return $this;
     }
 
-    private function writeTmpFile(): void
+    private function writeOutputFile(): void
     {
         $command = sprintf(
             'upower -i %s > %s',
@@ -37,7 +37,7 @@ class Parser
     /**
      * @throws Exception
      */
-    private function matchPercentage(): void
+    private function match(): void
     {
         $output = file_get_contents($this->config->getTmpFile());
         preg_match('/percentage:\s*(\d*)%/', $output, $matches);
