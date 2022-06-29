@@ -40,10 +40,16 @@ class Parser
     private function match(): void
     {
         $output = file_get_contents($this->config->getTmpFile());
-        preg_match('/percentage:\s*(\d*)%/', $output, $matches);
 
+        preg_match('/state:\s*unknown/', $output, $matches);
+
+        if (!empty($matches)) {
+            throw new \RuntimeException('Device not found');
+        }
+
+        preg_match('/percentage:\s*(\d*)%/', $output, $matches);
         if (!is_numeric(@$matches[1])) {
-            throw new Exception('Device not found');
+            throw new \RuntimeException('Device not found');
         }
 
         $this->setPercentage($matches[1]);
